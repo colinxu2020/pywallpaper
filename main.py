@@ -1,6 +1,6 @@
 __author__='colinxu2020'
 
-from libs import *
+from libs import setWallPaper
 
 
 if __name__=='__main__':
