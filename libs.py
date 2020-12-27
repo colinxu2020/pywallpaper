@@ -14,7 +14,7 @@ def setencoding() -> NoReturn:
     sys.stdin=io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
     sys.stderr=io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')
 
-def getWallPapers(day:int=1) -> tuple:
+def getWallPapers(day:int=0) -> tuple:
     """获取壁纸"""
     from json import load
     if day<0:day=abs(day)
