@@ -1,5 +1,6 @@
 wallPaperCachePath="wallPaperCache"
 autoSource='bingHPImageArchive'
+time=''
 [source.bingHPImageArchive]
 url='https://www.bing.com/HPImageArchive.aspx?format=js&idx={day}&n=1'
 filter="""import json
