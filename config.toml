@@ -1,9 +1,8 @@
 wallPaperCachePath="wallPaperCache"
-autoSource='bing'
-[source.bing]
-sitename='https://www.bing.com/HPImageArchive.aspx?format=js&idx={day}&n=1'
-filter="""
+autoSource='bingHPImageArchive'
+[source.bingHPImageArchive]
+url='https://www.bing.com/HPImageArchive.aspx?format=js&idx={day}&n=1'
+filter="""import json
 ret=json.load(ret)['images'][0]
 pic_title=ret['copyright']
-links='https://www.bing.com'+ret['url']
-"""
+links='https://www.bing.com'+ret['url']"""
