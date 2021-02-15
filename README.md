@@ -5,7 +5,7 @@
 - 先运行 init.py 安装第三方库
 - 通过 config.toml 自定义源(自带 Bing 源)
 - 运行 main.py 获取最新壁纸并设为桌面
-- 运行 schedule.py 定时设置桌面
+- 运行 runschedule.py 定时设置桌面
 
 # 优点
 - 支持自定义获取源
