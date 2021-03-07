@@ -22,18 +22,6 @@ def readConfig(Key:str) -> typing.Any:
         config=toml.load(f)[Key]
     return config
 
-def setencoding() -> typing.NoReturn:
-    """
-    Argment:
-        None
-    Return:
-        None
-    设置输出编码为UTF8
-    """
-    sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-    sys.stdin=io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
-    sys.stderr=io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')
-
 def getSource() -> dict[str,str]:
     """
     Argment:
