@@ -62,15 +62,18 @@ def writeFileLikeObjectToFile(Object:typing.Union[typing.TextIO,typing.BinaryIO]
     Argment:
         Object:FileLikeObject
         filepath:要写入到的文件路径
+        byte:bool
     Return:
         None
     
     将一个FileLikeObject写入到文件
+    !Wranning:  MyPy检查不通过
     """
     if byte: mode='wb'
     else: mode='w'
-    with open(filepath,mode=mode) as f:
-        f.write(Object.read())
+    f=open(filepath,mode=mode)
+    f.write(Object.read())
+    f.close()
 
 def setWallPaper(index:int=0) -> typing.NoReturn:
     """
