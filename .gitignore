@@ -216,11 +216,3 @@ dmypy.json
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/python,vscode,images
-
-# mypy_cache
-mypy.ini
-.mypy_cache/*
-
-#pytest_cache
-pytest.ini
-.pytest_cache/*
