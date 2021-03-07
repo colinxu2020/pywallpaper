@@ -22,7 +22,7 @@ def readConfig(Key:str) -> typing.Any:
         config=toml.load(f)[Key]
     return config
 
-def setencoding() -> NoReturn:
+def setencoding() -> typing.NoReturn:
     """
     Argment:
         None
@@ -69,7 +69,7 @@ def getWallPapers(day:int=0) -> tuple:
 
     return pic_title,link
 
-def writeFileLikeObjectToFile(Object:typing.Union(typing.TextIO,typing.BinaryIO),filepath:str,byte=True) -> NoReturn:
+def writeFileLikeObjectToFile(Object:typing.Union[typing.TextIO,typing.BinaryIO],filepath:str,byte:bool=True) -> typing.NoReturn:
     """
     Argment:
         Object:FileLikeObject
@@ -84,7 +84,7 @@ def writeFileLikeObjectToFile(Object:typing.Union(typing.TextIO,typing.BinaryIO)
     with open(filepath,mode=mode) as f:
         f.write(Object.read())
 
-def setWallPaper(index:int=0) -> NoReturn:
+def setWallPaper(index:int=0) -> typing.NoReturn:
     """
     Argments:
         index: 接受整形,图片日期,以当日为0
