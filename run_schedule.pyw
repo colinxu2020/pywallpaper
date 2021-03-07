@@ -2,7 +2,7 @@ import time
 import schedule
 import libs
 
-schedule.every().day.at(libs.readConfig('time')).do(libs.setWallPaper)
+schedule.every().day.at(libs.readConfig('schedule')['updateTime']).do(libs.setWallPaper)
 
 def run():
     while 1:
