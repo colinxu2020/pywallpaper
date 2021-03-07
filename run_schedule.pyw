@@ -1,4 +1,3 @@
-import threading
 import time
 import schedule
 import libs
@@ -10,4 +9,5 @@ def run():
         schedule.run_pending()
         time.sleep(1)
 
-threading.Thread(target=run).start()
+if __name__ == "__main__":
+    run()
