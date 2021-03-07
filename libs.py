@@ -1,7 +1,7 @@
 import urllib.request as req
 from json import load
 from os.path import abspath
-from typing import IO, NoReturn
+import typing
 import toml
 import io
 import sys
@@ -9,7 +9,7 @@ import sys
 global filepath
 __author__='colinxu2020'
 
-def readConfig(Key:str):
+def readConfig(Key:str) -> typing.Any:
     """
     Argments:
         Key: 接受字符串,要读取的配置信息
@@ -34,7 +34,7 @@ def setencoding() -> NoReturn:
     sys.stdin=io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
     sys.stderr=io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')
 
-def getSource():
+def getSource() -> dict[str,str]:
     """
     Argment:
         None
@@ -69,7 +69,7 @@ def getWallPapers(day:int=0) -> tuple:
 
     return pic_title,link
 
-def writeFileLikeObjectToFile(Object,filepath,byte=True) -> NoReturn:
+def writeFileLikeObjectToFile(Object:typing.Union(typing.TextIO,typing.BinaryIO),filepath:str,byte=True) -> NoReturn:
     """
     Argment:
         Object:FileLikeObject
