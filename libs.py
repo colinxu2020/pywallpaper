@@ -72,7 +72,7 @@ def write_file_like_object_text_to_file(file_like_object, filepath: str, mode = 
     """
     with open(filepath, mode) as fp:
         assert fp.writable(), 'file object most be writable' 
-        f.write(file_like_object.read())
+        fp.write(file_like_object.read())
 
 
 def set_wallpaper(index: int = 0) -> None:
@@ -86,7 +86,7 @@ def set_wallpaper(index: int = 0) -> None:
     """
     import ctypes
 
-    
+
     wallpaper = get_wallpaper(index)
     filepath = abspath(f'{read_config("wallPaperCachePath")}/wallpaper.jpg')
     write_file_like_object_text_to_file(req.urlopen(wallpaper[1]), filepath, 'wb')
