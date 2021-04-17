@@ -1,4 +1,10 @@
 # pywallpaper
+
+![](https://img.shields.io/github/v/tag/colinxu2020/pywallpaper?include_prereleases&sort=semver)
+![](https://img.shields.io/github/repo-size/colinxu2020/pywallpaper)
+![](https://img.shields.io/github/languages/code-size/colinxu2020/pywallpaper)
+![](https://img.shields.io/badge/total%20lines-200-blue.svg)
+
 **pyWallPaper可以从Bing接口(默认)获取图片并设为壁纸**
 
 # 用法
