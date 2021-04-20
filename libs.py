@@ -1,10 +1,7 @@
 import urllib.request as req
-from json import load
 from os.path import abspath
 import typing
 import toml
-import io
-import sys
 
 
 __author__ = 'colinxu2020'
@@ -59,7 +56,8 @@ def get_wallpaper(day: int = 0) -> tuple:
     return pic_title, link
 
 
-def write_file_like_object_text_to_file(file_like_object, filepath: str, mode = 'w') -> None:
+def write_file_like_object_text_to_file(
+        file_like_object, filepath: str, mode: str = 'w') -> None:
     """
     Argment:
         Object:FileLikeObject
@@ -71,7 +69,7 @@ def write_file_like_object_text_to_file(file_like_object, filepath: str, mode = 
     将一个FileLikeObject写入到文件
     """
     with open(filepath, mode) as fp:
-        assert fp.writable(), 'file object most be writable' 
+        assert fp.writable(), 'file object most be writable'
         fp.write(file_like_object.read())
 
 
@@ -86,8 +84,8 @@ def set_wallpaper(index: int = 0) -> None:
     """
     import ctypes
 
-
     wallpaper = get_wallpaper(index)
     filepath = abspath(f'{read_config("wallPaperCachePath")}/wallpaper.jpg')
-    write_file_like_object_text_to_file(req.urlopen(wallpaper[1]), filepath, 'wb')
+    write_file_like_object_text_to_file(
+        req.urlopen(wallpaper[1]), filepath, 'wb')
     ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath)
