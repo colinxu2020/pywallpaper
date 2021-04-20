@@ -16,7 +16,12 @@
 # 优点
 - 支持自定义获取源
 - 提供定时支持
+
+# 许可证
+**GNU AFFERO GENERAL PUBLIC LICENSE**
+
 # todo
 - [ ] GUI支持(十分有限的支持,位于 ui.py )
+- [ ] 视频支持
 - [x] 自定义获取源(通过配置文件)
 - [x] 定时支持(通过第三方库schedule)下
