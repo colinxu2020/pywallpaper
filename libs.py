@@ -1,7 +1,11 @@
 """
 The library of pywallpaper.
 
-Author: colinxu2020
+Author: Colinxu2020
+Date: 2020-12-24 19:08:21
+LastEditTime: 2021-06-14 17:30:26
+LastEditors: ColinXu2020
+FilePath: pywallpaper/libs.py
 
 Functions:
     read_config: read config file
@@ -10,6 +14,7 @@ Functions:
     write_file_like_object_text_to_file: write file like object's text to file
     set_wallpaper: set wallpaper
 """
+
 
 import urllib.request as req
 from os.path import abspath
@@ -31,8 +36,8 @@ def read_config(Key: str) -> typing.Any:
 
 def get_source() -> dict[str, str]:
     """Get default source."""
-    AutoSource = read_config('autoSource')
-    return read_config('source')[AutoSource]
+    defaultSource = read_config('defaultSource')
+    return read_config('source')[defaultSource]
 
 
 def get_wallpaper(day: int = 0) -> tuple:
