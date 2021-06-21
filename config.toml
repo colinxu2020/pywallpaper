@@ -1,5 +1,5 @@
 wallPaperCachePath="wallPaperCache"
-autoSource='bingHPImageArchive'
+defaultSource='bingHPImageArchive'
 [schedule]
 updateTime='0:0'
 [source.bingHPImageArchive]
