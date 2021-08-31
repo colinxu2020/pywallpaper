@@ -1,3 +1,20 @@
+"""
+Init script for Pywallpaper.
+
+Used Application:
+    PyWallpaper(https://github.com/colinxu2020/pywallpaper)
+Author:
+    Colinxu2020
+Version:2021.8.30
+Last Update: 2021.8.30 21:39(UTC+8)
+FilePath: /libs.py
+Version Change:
+    2021.8.30: Add this docs string.
+    ...
+Functions:
+    None
+"""
+
 from sys import argv
 from pip._internal.cli.main import main as pip
 from libs import setencoding

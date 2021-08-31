@@ -1,7 +1,18 @@
 """
-PyWallpaper main entry point.
+Entrypoint of Pywallpaper
 
-Author: colinxu2020
+Used Application:
+    PyWallpaper(https://github.com/colinxu2020/pywallpaper)
+Author:
+    Colinxu2020
+Version:2021.8.30
+Last Update: 2021.8.30 21:37(UTC+8)
+FilePath: /config.py
+Version Change:
+    2021.8.30: Add this docs string.
+Function:
+    None
+    ...
 """
 
 from libs import set_wallpaper

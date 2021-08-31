@@ -1,8 +1,16 @@
+[global]
+[global.enable_modules]
+config=1
+[pywallpaper]
 wallPaperCachePath="wallPaperCache"
 defaultSource='bingHPImageArchive'
-[schedule]
+[pywallpaper.enable_modules]
+libs=1
+main=1
+schedule=1
+[pywallpaper.schedule]
 updateTime='0:0'
-[source.bingHPImageArchive]
+[pywallpaper.source.bingHPImageArchive]
 url='https://www.bing.com/HPImageArchive.aspx?format=js&idx={day}&n=1'
 filter="""import json
 ret=json.load(ret)['images'][0]

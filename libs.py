@@ -1,12 +1,16 @@
 """
-The library of pywallpaper.
+Library of Pywallpaper.
 
-Author: Colinxu2020
-Date: 2020-12-24 19:08:21
-LastEditTime: 2021-06-14 17:30:26
-LastEditors: ColinXu2020
-FilePath: pywallpaper/libs.py
-
+Used Application:
+    PyWallpaper(https://github.com/colinxu2020/pywallpaper)
+Author:
+    Colinxu2020
+Version:2021.8.30
+Last Update: 2021.8.30 21:39(UTC+8)
+FilePath: /libs.py
+Version Change:
+    2021.8.30: Add this docs string.
+    ...
 Functions:
     read_config: read config file
     get_source: get default source
@@ -15,23 +19,21 @@ Functions:
     set_wallpaper: set wallpaper
 """
 
-
 import urllib.request as req
 from os.path import abspath
 import typing
-import toml
 
+import config
 
-def read_config(Key: str) -> typing.Any:
+config.check_is_enable('pywallpaper')
+def read_config(key: str) -> typing.Any:
     """
     Read config file.
 
     Arguments:
         Key: key name of the configuration information to be read
     """
-    with open('config.toml') as f:
-        config = toml.load(f)[Key]
-    return config
+    return config.get_config('pywallpaper')[key]
 
 
 def get_source() -> dict[str, str]:
