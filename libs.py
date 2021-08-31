@@ -9,6 +9,7 @@ Version:2021.8.30
 Last Update: 2021.8.30 21:39(UTC+8)
 FilePath: /libs.py
 Version Change:
+    2021.8.31: Update
     2021.8.30: Add this docs string.
     ...
 Functions:
@@ -36,6 +37,11 @@ def read_config(key: str) -> typing.Any:
     return config.get_config('pywallpaper')[key]
 
 
+def get_page(url:str, headers:dict[str, str]={}):
+    headers.setdefault('user-agent', "Python/Urllib/Pywallpaper/Spider keyword:Gecko")
+    return req.urlopen(req.Request(url, headers=headers))
+
+
 def get_source() -> dict[str, str]:
     """Get default source."""
     defaultSource = read_config('defaultSource')
@@ -52,10 +58,14 @@ def get_wallpaper(day: int = 0) -> tuple:
     source = get_source()
     day = -day
     url = source['url'].format(day=day)
-    headers = {"User-Agent": ""}
-    ret = req.urlopen(req.Request(url, headers=headers))
-
+    ret=get_page(url)
     locals = {'ret': ret}
+    try:
+        for pkg in source['need_packages']:
+            locals[pkg]=__import__(pkg)
+    except KeyError:
+        pass
+
     exec(source['filter'], None, locals)
     pic_title, link = locals['pic_title'], locals['links']
 
@@ -94,5 +104,5 @@ def set_wallpaper(index: int = 0) -> None:
     wallpaper = get_wallpaper(index)
     filepath = abspath(f'{read_config("wallPaperCachePath")}/wallpaper.jpg')
     write_file_like_object_text_to_file(
-        req.urlopen(wallpaper[1]), filepath, 'wb')
+        get_page(wallpaper[1]), filepath, 'wb')
     ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath)

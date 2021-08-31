@@ -10,9 +10,22 @@ main=1
 schedule=1
 [pywallpaper.schedule]
 updateTime='0:0'
+
 [pywallpaper.source.bingHPImageArchive]
 url='https://www.bing.com/HPImageArchive.aspx?format=js&idx={day}&n=1'
 filter="""import json
 ret=json.load(ret)['images'][0]
 pic_title=ret['copyright']
 links='https://www.bing.com'+ret['url']"""
+
+[pywallpaper.source.wallpaper_abyss]
+url='https://wall.alphacoders.com/'
+filter="""
+from lxml.etree import HTML
+flt = HTML(ret.read())
+img_src = flt.xpath('//img[@class="img-responsive"]/@src')[0]
+pic_title='The wallpaper from '+flt.xpath('//div[@class="featured-categorization"]/span/a/text()')[2].strip()
+links=img_src
+print(links, pic_title)
+"""
+need_packages=['lxml.etree']

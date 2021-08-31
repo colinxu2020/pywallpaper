@@ -9,6 +9,7 @@ Version:2021.8.30
 Last Update: 2021.8.30 21:37(UTC+8)
 FilePath: /config.py
 Version Change:
+    2021.8.31: Change Welcome string
     2021.8.30: Add this docs string.
 Function:
     None
@@ -19,5 +20,5 @@ from libs import set_wallpaper
 
 
 if __name__ == '__main__':
-    day = input('请输入日期(0代表今天,1代表明天,-1代表昨天,以此类推)')
+    day = input('请输入日期(0代表今天,1代表明天,-1代表昨天,以此类推)(部分源可能不支持该选项)')
     set_wallpaper(int(day))
