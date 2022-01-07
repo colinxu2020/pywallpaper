@@ -38,17 +38,20 @@ def read_config(key: str) -> typing.Any:
     """
     return config.get_config("pywallpaper")[key]
 
-def get_page(url, headers: dict[str, str]=None):
+
+def get_page(url, headers: dict[str, str] = None):
     """
     Get a page from network.
-    
+
     Arguments:
         url: Remote address.
     """
     if headers is None:
         headers = {}
     headers.setdefault("user-agent", "Python/Urllib/Pywallpaper/Spider keyword:Gecko")
-    return req.urlopen(req.Request(url, headers=headers))  # skipcq: BAN-B310  # This is INTENTIONAL, this is use to allow user define special url. 
+    return req.urlopen(
+        req.Request(url, headers=headers)
+    )  # skipcq: BAN-B310  # This is INTENTIONAL, this is use to allow user define special url.
 
 
 def get_source() -> dict[str, str]:
@@ -75,7 +78,9 @@ def get_wallpaper(day: int = 0) -> tuple:
     except KeyError:
         pass
 
-    exec(source["filter"], None, pkg_locals)  # skipcq: PYL-W0122  # This is INTENTIONAL to run USER DEFINED filter script.
+    exec(
+        source["filter"], None, pkg_locals
+    )  # skipcq: PYL-W0122  # This is INTENTIONAL to run USER DEFINED filter script.
     pic_title, link = pkg_locals["pic_title"], pkg_locals["links"]
 
     return pic_title, link
