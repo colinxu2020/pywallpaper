@@ -75,7 +75,7 @@ def get_wallpaper(day: int = 0) -> tuple:
     except KeyError:
         pass
 
-    exec(source["filter"], None, pkg_locals)
+    exec(source["filter"], None, pkg_locals)  # skipcq: PYL-W0122  # This is INTENTIONAL to run USER DEFINED filter script.
     pic_title, link = pkg_locals["pic_title"], pkg_locals["links"]
 
     return pic_title, link
