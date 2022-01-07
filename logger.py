@@ -21,14 +21,14 @@ try:
 except ModuleNotFoundError:
     from logging import Logger
 
-__version__ = '20210824'
-__author__ = ['Colinxu2020']
+__version__ = "20210824"
+__author__ = ["Colinxu2020"]
 
 argv = argv[1:]
 kv = {}
 for idx, arg in enumerate(list(argv)):
-    if arg.startswith('--logging.'):
+    if arg.startswith("--logging."):
         del argv[idx]
-        arg = arg[10:].split('=')
+        arg = arg[10:].split("=")
         kv[arg[0]] = arg[1]
 logger = Logger(**kv)
