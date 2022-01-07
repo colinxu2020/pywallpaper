@@ -204,8 +204,10 @@ class MuitiWriterLogger(Logger):
             format: str = '{level} : {name} : {time} : {text}',
             error_writer: writer = StderrWriter,
             warning_writer: writer = WarningWriter,
-            writers: dict[Level, MuitiWriterWriter] = {},
+            writers: dict[Level, MuitiWriterWriter] = None,
             enable: bool = True) -> None:
+        if writers is None:
+            writers = {}
         Logger.__init__(self, name, level, writer, format, error_writer, warning_writer, enable)
         for key, writer in writers.values():
             if not isinstance(writer, MuitiWriterWriter):

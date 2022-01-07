@@ -77,7 +77,9 @@ def read_config_from_config_file(name):
     return config
 
 
-def get_config(name, nargs=[], check_enable=True):
+def get_config(name, nargs=None, check_enable=True):
+    if nargs is None:
+        nargs = []
     global config_enable
     if check_enable and config_enable!=True:
         try:
