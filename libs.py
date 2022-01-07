@@ -41,7 +41,7 @@ def read_config(key: str) -> typing.Any:
 def get_page(url, headers: dict[str, str]=None):
     """
     Get a page from network.
-    
+
     Arguments:
         url: Remote address.
     """
