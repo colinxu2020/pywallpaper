@@ -38,10 +38,11 @@ def read_config(key: str) -> typing.Any:
     """
     return config.get_config("pywallpaper")[key]
 
-def get_page(url, headers: dict[str, str]=None):
+
+def get_page(url, headers: dict[str, str] = None):
     """
     Get a page from network.
-    
+
     Arguments:
         url: Remote address.
     """
