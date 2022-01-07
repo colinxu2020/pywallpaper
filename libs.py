@@ -38,6 +38,13 @@ def read_config(key: str) -> typing.Any:
     """
     return config.get_config("pywallpaper")[key]
 
+def get_page(url, headers: dict[str, str]=None):
+    """
+    Get a page from network.
+    
+    Arguments:
+        url: Remote address.
+    """
     if headers is None:
         headers = {}
     headers.setdefault("user-agent", "Python/Urllib/Pywallpaper/Spider keyword:Gecko")
@@ -61,15 +68,15 @@ def get_wallpaper(day: int = 0) -> tuple:
     day = -day
     url = source["url"].format(day=day)
     ret = get_page(url)
-    locals = {"ret": ret}
+    pkg_locals = {"ret": ret}
     try:
         for pkg in source["need_packages"]:
             locals[pkg] = __import__(pkg)
     except KeyError:
         pass
 
-    exec(source["filter"], None, locals)
-    pic_title, link = locals["pic_title"], locals["links"]
+    exec(source["filter"], None, pkg_locals)
+    pic_title, link = pkg_locals["pic_title"], pkg_locals["links"]
 
     return pic_title, link
 
@@ -89,8 +96,10 @@ def write_file_like_object_text_to_file(
         mode = "w" + file_like_object.mode[1:]
     with open(filepath, mode) as fp:
         content = file_like_object.read()
-        assert fp.writable(), "file object most be writable"
-        assert content, "text in file_link_objct most not None"
+        if not (hasattr(fp, "writable") and fp.writable()):
+            raise TypeError("File object most be writable")
+        if not content:
+            raise ValueError("Text in file like object most not be empty")
         fp.write(content)
 
 
