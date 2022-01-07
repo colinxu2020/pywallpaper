@@ -38,10 +38,11 @@ def read_config(key: str) -> typing.Any:
     """
     return config.get_config("pywallpaper")[key]
 
-def get_page(url, headers: dict[str, str]=None):
+
+def get_page(url, headers: dict[str, str] = None):
     """
     Get a page from network.
-    
+
     Arguments:
         url: Remote address.
     """
@@ -75,7 +76,9 @@ def get_wallpaper(day: int = 0) -> tuple:
     except KeyError:
         pass
 
-    exec(source["filter"], None, pkg_locals)  # skipcq: PYL-W0122  # This is INTENTIONAL to run USER DEFINED filter script.
+    exec(
+        source["filter"], None, pkg_locals
+    )  # skipcq: PYL-W0122  # This is INTENTIONAL to run USER DEFINED filter script.
     pic_title, link = pkg_locals["pic_title"], pkg_locals["links"]
 
     return pic_title, link
