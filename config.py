@@ -56,10 +56,9 @@ def check_is_enable(name, module_name=None):
 def _parse_key(key):
     if "=" in key:
         return key.split("=")
-    elif "no-" in key:
+    if "no-" in key:
         return key[3:], "False"
-    else:
-        return key, "True"
+    return key, "True"
 
 
 def read_config_from_commandline():
