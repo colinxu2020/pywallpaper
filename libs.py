@@ -48,7 +48,7 @@ def get_page(url, headers: dict[str, str]=None):
     if headers is None:
         headers = {}
     headers.setdefault("user-agent", "Python/Urllib/Pywallpaper/Spider keyword:Gecko")
-    return req.urlopen(req.Request(url, headers=headers))
+    return req.urlopen(req.Request(url, headers=headers))  # skipcq: BAN-B310  # This is INTENTIONAL, this is use to allow user define special url. 
 
 
 def get_source() -> dict[str, str]:
@@ -108,7 +108,7 @@ def set_wallpaper(index: int = 0) -> None:
     Set wallpaper from source in config.
 
     Arguments:
-        index: 接受整形,图片日期,以当日为0
+        index: Photo index, 0 for today.
     """
     import ctypes
 
