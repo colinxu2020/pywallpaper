@@ -89,7 +89,7 @@ def get_config(name, nargs=None, check_enable=True):
     if nargs is None:
         nargs = []
     global config_enable
-    if check_enable and config_enable != True:
+    if check_enable and config_enable is not True:
         try:
             check_is_enable("global", "config")
             config_enable = True
