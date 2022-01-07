@@ -26,7 +26,9 @@ import typing
 
 import config
 
-config.check_is_enable('pywallpaper')
+config.check_is_enable("pywallpaper")
+
+
 def read_config(key: str) -> typing.Any:
     """
     Read config file.
@@ -34,20 +36,20 @@ def read_config(key: str) -> typing.Any:
     Arguments:
         Key: key name of the configuration information to be read
     """
-    return config.get_config('pywallpaper')[key]
+    return config.get_config("pywallpaper")[key]
 
 
-def get_page(url:str, headers:dict[str, str]=None):
+def get_page(url: str, headers: dict[str, str] = None):
     if headers is None:
         headers = {}
-    headers.setdefault('user-agent', "Python/Urllib/Pywallpaper/Spider keyword:Gecko")
+    headers.setdefault("user-agent", "Python/Urllib/Pywallpaper/Spider keyword:Gecko")
     return req.urlopen(req.Request(url, headers=headers))
 
 
 def get_source() -> dict[str, str]:
     """Get default source."""
-    defaultSource = read_config('defaultSource')
-    return read_config('source')[defaultSource]
+    defaultSource = read_config("defaultSource")
+    return read_config("source")[defaultSource]
 
 
 def get_wallpaper(day: int = 0) -> tuple:
@@ -59,24 +61,24 @@ def get_wallpaper(day: int = 0) -> tuple:
     """  # noqa: E501
     source = get_source()
     day = -day
-    url = source['url'].format(day=day)
-    ret=get_page(url)
-    locals = {'ret': ret}
+    url = source["url"].format(day=day)
+    ret = get_page(url)
+    locals = {"ret": ret}
     try:
-        for pkg in source['need_packages']:
-            locals[pkg]=__import__(pkg)
+        for pkg in source["need_packages"]:
+            locals[pkg] = __import__(pkg)
     except KeyError:
         pass
 
-    exec(source['filter'], None, locals)
-    pic_title, link = locals['pic_title'], locals['links']
+    exec(source["filter"], None, locals)
+    pic_title, link = locals["pic_title"], locals["links"]
 
     return pic_title, link
 
 
 def write_file_like_object_text_to_file(
-        file_like_object, filepath: str,
-        mode: typing.Optional[str] = None) -> None:
+    file_like_object, filepath: str, mode: typing.Optional[str] = None
+) -> None:
     """
     Write text of object has read attribute to file.
 
@@ -86,11 +88,11 @@ def write_file_like_object_text_to_file(
         mode: the mode of open file will write to.
     """
     if mode is None:
-        mode = 'w' + file_like_object.mode[1:]
+        mode = "w" + file_like_object.mode[1:]
     with open(filepath, mode) as fp:
         content = file_like_object.read()
-        assert fp.writable(), 'file object most be writable'
-        assert content, 'text in file_link_objct most not None'
+        assert fp.writable(), "file object most be writable"
+        assert content, "text in file_link_objct most not None"
         fp.write(content)
 
 
@@ -105,6 +107,5 @@ def set_wallpaper(index: int = 0) -> None:
 
     wallpaper = get_wallpaper(index)
     filepath = abspath(f'{read_config("wallPaperCachePath")}/wallpaper.jpg')
-    write_file_like_object_text_to_file(
-        get_page(wallpaper[1]), filepath, 'wb')
+    write_file_like_object_text_to_file(get_page(wallpaper[1]), filepath, "wb")
     ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath)
