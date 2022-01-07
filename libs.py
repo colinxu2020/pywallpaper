@@ -38,7 +38,6 @@ def read_config(key: str) -> typing.Any:
     """
     return config.get_config("pywallpaper")[key]
 
-  
     if headers is None:
         headers = {}
     headers.setdefault("user-agent", "Python/Urllib/Pywallpaper/Spider keyword:Gecko")
